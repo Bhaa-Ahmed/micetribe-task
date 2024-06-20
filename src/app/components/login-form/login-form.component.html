@@ -1,5 +1,5 @@
 <form [formGroup]="loginForm" class="w-1/2 my-12 mx-auto p-6 shadow-xl">
-  <div class="grid grid-cols-2">
+  <div class="grid grid-cols-1 lg:grid-cols-2">
     <div class="p-2 pb-6 relative">
       <label
         for="firstName"
@@ -86,7 +86,7 @@
       <span class="absolute bottom-0 left-4 text-sm text-red-500">Please enter a valid password</span>
       }
     </div>
-    <div class="p-2 pb-6 relative col-span-2">
+    <div class="p-2 pb-6 relative lg:col-span-2">
       <label
         class="mb-2 block"
         for="address"
@@ -135,12 +135,12 @@
         <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
       }
     </div>
-    <div class="p-2 pb-6 relative col-span-2 flex items-center">
+    <div class="p-2 pb-6 relative lg:col-span-2 flex items-center">
       <input type="checkbox" id="termsAndConditions" formControlName="termsAndConditions"/>
       <label for="termsAndConditions" class="ml-4">Terms And Conditions</label>
     </div>
   </div>
-  <div class="w-1/4 flex items-center justify-between">
+  <div class="w-1/2 lg:w-1/2 flex items-center justify-between">
     <button class="bg-blue-500 rounded py-1 px-2 text-white hover:bg-blue-700 active:bg-blue-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed"
     (click)="dispatchFormChange(historyArrayEnum.UndoArray)" [disabled]="!(isUndoButtonDisabled$ | async)">undo</button>
     <button class="bg-blue-500 rounded py-1 px-2 text-white hover:bg-blue-700 active:bg-blue-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed"

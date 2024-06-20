@@ -5,6 +5,7 @@ import { HistoryArray } from '../../enums/enums';
 import { FormService } from '../../services/form.service';
 import { map } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-form',
@@ -17,6 +18,7 @@ export class LoginFormComponent {
   private fb = inject(FormBuilder);
   private formService = inject(FormService);
   private destroyRef = inject(DestroyRef);
+  private toastr = inject(ToastrService);
 
   readonly historyArrayEnum = HistoryArray;
 
@@ -60,5 +62,6 @@ export class LoginFormComponent {
       return
     }
     this.loginForm.patchValue(JSON.parse(formValue));
+    historyArrayEnum === this.historyArrayEnum.UndoArray ? this.toastr.success('Undo') : this.toastr.success('Redo') ;
   }
 }
