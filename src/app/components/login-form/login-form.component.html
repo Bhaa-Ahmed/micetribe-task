@@ -1,4 +1,4 @@
-<form class="w-1/2 my-12 mx-auto p-6 shadow-md">
+<form [formGroup]="loginForm" class="w-1/2 my-12 mx-auto p-6 shadow-xl">
   <div class="grid grid-cols-2">
     <div class="p-2 pb-6 relative">
       <label
@@ -10,10 +10,15 @@
         type="text"
         id="firstName"
         class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        [ngClass]="{'ring-red-500': loginForm.controls.firstName.invalid && loginForm.controls.firstName.touched}"
         placeholder="First name"
+        formControlName="firstName"
       />
-      @if(true) {
-      <span class="absolute bottom-0 left-4 text-sm text-red-500"> error </span>
+      @if(loginForm.controls.firstName.invalid && loginForm.controls.firstName.touched && loginForm.controls.firstName.hasError('required')) {
+      <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
+      }
+      @if(loginForm.controls.firstName.invalid && loginForm.controls.firstName.touched && loginForm.controls.firstName.hasError('pattern')) {
+      <span class="absolute bottom-0 left-4 text-sm text-red-500">Please enter a valid name</span>
       }
     </div>
     <div class="p-2 pb-6 relative">
@@ -24,13 +29,18 @@
       >
       <input
         type="text"
-        id="LastName"
+        id="lastName"
         class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        [ngClass]="{'ring-red-500': loginForm.controls.lastName.invalid && loginForm.controls.lastName.touched}"
         placeholder="Last name"
+        formControlName="lastName"
       />
-      @if(true) {
-      <span class="absolute bottom-0 left-4 text-sm text-red-500"> error </span>
-      }
+      @if(loginForm.controls.lastName.invalid && loginForm.controls.lastName.touched && loginForm.controls.lastName.hasError('required')) {
+        <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
+        }
+        @if(loginForm.controls.lastName.invalid && loginForm.controls.lastName.touched && loginForm.controls.lastName.hasError('pattern')) {
+        <span class="absolute bottom-0 left-4 text-sm text-red-500">Please enter a valid name</span>
+        }
     </div>
     <div class="p-2 pb-6 relative">
       <label
@@ -43,11 +53,16 @@
         type="email"
         id="email"
         class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        [ngClass]="{'ring-red-500': loginForm.controls.email.invalid && loginForm.controls.email.touched}"
         placeholder="Email"
+        formControlName="email"
       />
-      @if(true) {
-      <span class="absolute bottom-0 left-4 text-sm text-red-500"> error </span>
-      }
+      @if(loginForm.controls.email.invalid && loginForm.controls.email.touched && loginForm.controls.email.hasError('required')) {
+        <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
+        }
+        @if(loginForm.controls.email.invalid && loginForm.controls.email.touched && loginForm.controls.email.hasError('pattern')) {
+        <span class="absolute bottom-0 left-4 text-sm text-red-500">Please enter a valid email</span>
+        }
     </div>
     <div class="p-2 pb-6 relative">
       <label
@@ -60,10 +75,15 @@
         type="password"
         id="password"
         class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        [ngClass]="{'ring-red-500': loginForm.controls.password.invalid && loginForm.controls.password.touched}"
         placeholder="Password"
+        formControlName="password"
       />
-      @if(true) {
-      <span class="absolute bottom-0 left-4 text-sm text-red-500"> error </span>
+      @if(loginForm.controls.password.invalid && loginForm.controls.password.touched && loginForm.controls.password.hasError('required')) {
+      <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
+      }
+      @if(loginForm.controls.password.invalid && loginForm.controls.password.touched && loginForm.controls.password.hasError('pattern')) {
+      <span class="absolute bottom-0 left-4 text-sm text-red-500">Please enter a valid password</span>
       }
     </div>
     <div class="p-2 pb-6 relative col-span-2">
@@ -77,22 +97,24 @@
         type="text"
         id="address"
         class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        [ngClass]="{'ring-red-500': loginForm.controls.address.invalid && loginForm.controls.address.touched}"
         placeholder="Address"
+        formControlName="address"
       />
-      @if(true) {
-      <span class="absolute bottom-0 left-4 text-sm text-red-500"> error </span>
+      @if(loginForm.controls.address.invalid && loginForm.controls.address.touched && loginForm.controls.address.hasError('required')) {
+        <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
       }
     </div>
     <div class="p-2 pb-6 relative">
       <label class="mb-2 block" for="gender">Gender</label>
       <div class="flex items-center">
-        <input type="radio" id="gender" value="male" class="mr-2" />
+        <input type="radio" id="gender" value="male" class="mr-2" formControlName="gender"/>
         <span class="mr-4">Male</span>
-        <input type="radio" id="gender" value="female" class="mr-2" />
+        <input type="radio" id="gender" value="female" class="mr-2" formControlName="gender"/>
         <span class="mr-4">Female</span>
       </div>
-      @if(true) {
-      <span class="absolute bottom-0 left-4 text-sm text-red-500"> error </span>
+      @if(loginForm.controls.gender.invalid && loginForm.controls.gender.touched && loginForm.controls.gender.hasError('required')) {
+        <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
       }
     </div>
     <div class="p-2 pb-6 relative">
@@ -101,6 +123,7 @@
         name="country"
         id="country"
         class="outline outline-gray-300 outline-offset-2 rounded"
+        formControlName="country"
       >
         <option value="egypt">Egypt</option>
         <option value="ksa">KSA</option>
@@ -108,12 +131,12 @@
         <option value="spain">Spain</option>
         <option value="portugal">Portugal</option>
       </select>
-      @if(true) {
-      <span class="absolute bottom-0 left-4 text-sm text-red-500"> error </span>
+      @if(loginForm.controls.country.invalid && loginForm.controls.country.touched && loginForm.controls.country.hasError('required')) {
+        <span class="absolute bottom-0 left-4 text-sm text-red-500">This field is required</span>
       }
     </div>
     <div class="p-2 pb-6 relative col-span-2 flex items-center">
-      <input type="checkbox" id="termsAndConditions" />
+      <input type="checkbox" id="termsAndConditions" formControlName="termsAndConditions"/>
       <label for="termsAndConditions" class="ml-4">Terms And Conditions</label>
     </div>
   </div>

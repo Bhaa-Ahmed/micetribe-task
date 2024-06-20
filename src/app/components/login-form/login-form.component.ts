@@ -1,10 +1,11 @@
+import { NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
 })
