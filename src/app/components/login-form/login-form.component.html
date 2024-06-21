@@ -141,9 +141,9 @@
     </div>
   </div>
   <div class="w-1/2 lg:w-1/2 flex items-center justify-between">
-    <button class="bg-blue-500 rounded py-1 px-2 text-white hover:bg-blue-700 active:bg-blue-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed"
+    <button id="undo-btn" class="bg-blue-500 rounded py-1 px-2 text-white hover:bg-blue-700 active:bg-blue-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed"
     (click)="dispatchFormChange(historyArrayEnum.UndoArray)" [disabled]="!(isUndoButtonDisabled$ | async)">undo</button>
-    <button class="bg-blue-500 rounded py-1 px-2 text-white hover:bg-blue-700 active:bg-blue-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed"
+    <button id="redo-btn" class="bg-blue-500 rounded py-1 px-2 text-white hover:bg-blue-700 active:bg-blue-700 cursor-pointer disabled:bg-gray-600 disabled:cursor-not-allowed"
     (click)="dispatchFormChange(historyArrayEnum.RedoArray)" [disabled]="!(isRedoButtonDisabled$ | async)">redo</button>
   </div>
 </form>
